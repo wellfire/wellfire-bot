@@ -1,5 +1,5 @@
 # Description:
-#   Queries Harvest for a sum or list of open invoices
+#   Queries Harvest for information about invoices
 #
 # Configuration:
 #   HUBOT_HARVEST_USER

@@ -1,5 +1,5 @@
 # Description:
-#   Queries Zendesk for information about outstanding tickets
+#   Queries Zendesk for information about support tickets
 #
 # Configuration:
 #   HUBOT_ZENDESK_USER
@@ -7,10 +7,12 @@
 #   HUBOT_ZENDESK_SUBDOMAIN
 #
 # Commands:
-#   (all) tickets - returns the total count of all unsolved tickets
+#   (all) tickets - returns the total count of all unsolved tickets. The 'all'
+#                   keyword is optional.
 #   new tickets - returns the count of all new tickets
 #   open tickets - returns the count of all open tickets
-#   list (all) tickets - returns a list of all unsolved tickets
+#   list (all) tickets - returns a list of all unsolved tickets. The 'all'
+#                   keyword is optional.
 #   list new tickets - returns a list of all new tickets
 #   list open tickets - returns a list of all open tickets
 #   ticket <ID> - returns informationa about the specified ticket
