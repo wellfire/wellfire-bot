@@ -15,14 +15,9 @@
   },
 
   "dependencies": {
-    "hubot": "2.2.1",
+    "hubot": ">=2.2.1",
     "hubot-scripts": ">=2.0.8",
     "optparse": "1.0.3"
-  },
-
-  "engines": {
-    "node": "0.6.x",
-    "npm": "1.0.x"
   }
 }
 
