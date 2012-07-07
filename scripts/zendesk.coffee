@@ -13,7 +13,7 @@
 
 module.exports = (robot) ->
 
-  robot.respond /tickets$/i, (msg) ->
+  robot.respond /(all )?tickets$/i, (msg) ->
     zendesk_request msg, search.unsolved, (tickets) ->
       ticket_count = tickets.count
       msg.send "#{ticket_count} unsolved tickets"
