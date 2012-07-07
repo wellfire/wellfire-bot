@@ -14,19 +14,34 @@
 module.exports = (robot) ->
 
   robot.respond /(all )?tickets$/i, (msg) ->
-    zendesk_request msg, search.unsolved, (tickets) ->
-      ticket_count = tickets.count
+    zendesk_request msg, search.unsolved, (results) ->
+      ticket_count = results.count
       msg.send "#{ticket_count} unsolved tickets"
 
   robot.respond /new tickets$/i, (msg) ->
-    zendesk_request msg, search.new, (tickets) ->
-      ticket_count = tickets.count
+    zendesk_request msg, search.new, (results) ->
+      ticket_count = results.count
       msg.send "#{ticket_count} new tickets"
 
   robot.respond /open tickets$/i, (msg) ->
-    zendesk_request msg, search.open, (tickets) ->
-      ticket_count = tickets.count
+    zendesk_request msg, search.open, (results) ->
+      ticket_count = results.count
       msg.send "#{ticket_count} open tickets"
+
+  robot.respond /list (all )?tickets$/i, (msg) ->
+    zendesk_request msg, search.unsolved, (results) ->
+      for result in results.results
+        msg.send "#{result.id} is #{result.status}: #{result.subject}"
+
+  robot.respond /list new tickets$/i, (msg) ->
+    zendesk_request msg, search.new, (results) ->
+      for result in results.results
+        msg.send "#{result.id} is #{result.status}: #{result.subject}"
+
+  robot.respond /list open tickets$/i, (msg) ->
+    zendesk_request msg, search.open, (results) ->
+      for result in results.results
+        msg.send "#{result.id} is #{result.status}: #{result.subject}"
 
   search =
     unsolved: "search.json?query=\"status<solved type:ticket\""
