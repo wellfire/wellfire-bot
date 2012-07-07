@@ -12,6 +12,7 @@
 #   open tickets - returns the count of all open tickets
 
 module.exports = (robot) ->
+
   robot.respond /tickets$/i, (msg) ->
     zendesk_request msg, search.unsolved, (tickets) ->
       ticket_count = tickets.count
