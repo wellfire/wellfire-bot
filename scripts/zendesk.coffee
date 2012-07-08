@@ -41,8 +41,8 @@ zendesk_request = (msg, url, handler) ->
         content = JSON.parse(body)
         handler content
 
-
-zendesk_users = (msg, user_id) ->
+# FIXME this works about as well as a brick floats
+zendesk_user = (msg, user_id) ->
   zendesk_request msg, "#{queries.users}/#{user_id}.json", (result) ->
     if result.error
       msg.send result.description
@@ -88,7 +88,8 @@ module.exports = (robot) ->
       if result.error
         msg.send result.description
         return
-      message = "#{result.ticket.id}, #{result.ticket.subject} (#{result.ticket.status.toUpperCase()})"
-      assignee = zendesk_users msg, result.ticket.assignee_id
-      requester = zendesk_users msg, result.ticket.requester_id
-      msg.send "#{message}, requested by #{requester.name} and assigned to #{assignee}"
+      message = "#{result.ticket.subject} ##{result.ticket.id} (#{result.ticket.status.toUpperCase()})"
+      message += "\nUpdated: #{result.ticket.updated_at}"
+      message += "\nAdded: #{result.ticket.created_at}"
+      message += "\nDescription:\n-------\n#{result.ticket.description}\n--------"
+      msg.send message
