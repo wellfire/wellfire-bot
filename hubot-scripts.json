@@ -1,1 +1,3 @@
-["alot.coffee"]
+["ackbar.coffee", "alot.coffee", "archer.coffee", "brb.coffee",
+  "github-status.coffee", "hackernews.coffee", "yoda-quotes.coffee",
+  "pypi.coffee", "spotify.coffee"]
