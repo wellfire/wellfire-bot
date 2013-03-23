@@ -13,6 +13,18 @@ those dependencies are provided by [npm][npmjs].
 
 [npmjs]: http://npmjs.org
 
+## Environment
+
+You may need to declare environment variables for use with adapaters and
+other scripts. You can manage these locally using a `.env` file.
+
+```shell
+HUBOT_HIPCHAT_JID=94633_112533@chat.hipchat.com
+HUBOT_HIPCHAT_PASSWORD=password
+HUBOT_HIPCHAT_ROOMS=All
+HUBOT_HIPCHAT_DEBUG=True
+```
+
 ## HTTP Listener
 
 Hubot has a HTTP listener which listens on the port specified by the `PORT`
